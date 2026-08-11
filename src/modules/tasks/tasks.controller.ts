@@ -41,7 +41,7 @@ export async function update(req: AuthRequest, res: Response, next: NextFunction
       return res.status(400).json({ errors: parsed.error.flatten().fieldErrors });
     }
 
-    const task = await updateTask(req.userId!, req.params.id, parsed.data);
+    const task = await updateTask(req.userId!, req.params.id as string, parsed.data);
     res.status(200).json(task);
   } catch (err) {
     next(err);
@@ -50,7 +50,7 @@ export async function update(req: AuthRequest, res: Response, next: NextFunction
 
 export async function remove(req: AuthRequest, res: Response, next: NextFunction) {
   try {
-    await deleteTask(req.userId!, req.params.id);
+    await deleteTask(req.userId!, req.params.id as string);
     res.status(204).send();
   } catch (err) {
     next(err);
