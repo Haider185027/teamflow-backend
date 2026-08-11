@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import authRoutes from "./modules/auth/auth.routes";
 import organizationsRoutes from "./modules/organizations/organizations.routes";
+import teamsRoutes from "./modules/teams/teams.routes";
 import { errorHandler } from "./middleware/errorHandler";
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/organizations", organizationsRoutes);
+app.use("/api/teams", teamsRoutes);
 
 app.use(errorHandler);
 
