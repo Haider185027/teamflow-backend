@@ -10,6 +10,7 @@ import { errorHandler } from "./middleware/errorHandler";
 const app = express();
 
 app.use(cors());
+app.get("/health", (req, res) => res.status(200).json({ status: "ok" }));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
